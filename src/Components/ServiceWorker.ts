@@ -1,17 +1,17 @@
-export default function InitializingServiceWorker() {
+export default function InitializingServiceWorker () {
   /* Only register a service worker if it's supported */
   if ('serviceWorker' in navigator) {
-    window.addEventListener('load', function () {
-      navigator.serviceWorker.register('serviceWorker.js').then(function (registration) {
-        console.log('Worker registration successful', registration.scope);
-      }, function (err) {
-        console.log('Worker registration failed', err);
-      }).catch(function (err) {
-        console.log(err);
-      });
-    });
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('serviceWorker.js').then((registration) => {
+        console.log('Worker registration successful', registration.scope)
+      }, (err) => {
+        console.log('Worker registration failed', err)
+      }).catch((err) => {
+        console.log(err)
+      })
+    })
   } else {
-    console.log('Service Worker is not supported by browser.');
+    console.log('Service Worker is not supported by browser.')
   }
 
   /**

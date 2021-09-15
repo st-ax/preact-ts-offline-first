@@ -5,6 +5,7 @@ export default defineConfig({
   esbuild: {
     jsxFactory: 'h',
     jsxFragment: 'Fragment',
+    target: 'es2020',
   },
   resolve: {
     alias: [

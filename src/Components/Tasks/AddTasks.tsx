@@ -1,24 +1,19 @@
-import { h } from 'preact';
-import { useState } from 'preact/hooks';
-import { useSetRecoilState } from 'recoil';
-import { ActiveTasksState } from '../../Recoil/recoilState';
-import { Task } from '../../Model/Task';
-import { TaskStatus } from '../../Model/TaskStatus';
+import { h } from 'preact'
+import { useState } from 'preact/hooks'
+import { TaskStatus } from '../../Model/TaskStatus'
+import { addActiveTask } from '../../Recoil/recoilState'
 
-export default function AddTasks() {
-  const [inputValue, setInputValue] = useState('');
-  const setActiveTasks = useSetRecoilState(ActiveTasksState);
-  
-  function onSubmit(e: any) {
-    e.preventDefault();
-    e.target.reset();
-    setActiveTasks((oldState: Task[]) => [
-      ...oldState, { task: inputValue, status: TaskStatus.Active }
-    ]);
-    setInputValue('');
+export default function AddTasks () {
+  const [inputValue, setInputValue] = useState('')
+
+  function onSubmit (e: any) {
+    e.preventDefault()
+    e.target.reset()
+    void addActiveTask({ task: inputValue, status: TaskStatus.Active })
+    setInputValue('')
   }
-  function addInputChange(task: string) {
-    setInputValue(task);
+  function addInputChange (task: string) {
+    setInputValue(task)
   }
 
   return (
@@ -28,5 +23,5 @@ export default function AddTasks() {
         <button class="border border-red-800 bg-red-600 hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-purple-600 focus:ring-opacity-50 mx-2 mt-4 rounded-lg px-4" type="submit">Add Task</button>
       </form>
     </div>
-  );
+  )
 }

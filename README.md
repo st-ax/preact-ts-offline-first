@@ -9,7 +9,6 @@
 - 🎨 [TailwindCSS v2.0](https://blog.tailwindcss.com/tailwindcss-v2)
 - ⚡ [Vite v2.0](https://github.com/vitejs/vite)
 - 📝 Eslint
-- ✨ Prettier
 - 🔱 Typescript
 - 💥 Recoil for state management
 - 🔥 PWA
