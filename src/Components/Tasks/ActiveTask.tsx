@@ -1,9 +1,9 @@
+import { useLiveQuery } from 'dexie-react-hooks'
 import { h } from 'preact'
 import { useRef, useState } from 'preact/hooks'
-import { useRecoilValue } from 'recoil'
+import { ActiveTasksQuery, completeActiveTask, delActiveTask, updateActiveTask } from '../../Data/data'
 import { Task } from '../../Model/Task'
 import { TaskStatus } from '../../Model/TaskStatus'
-import { ActiveTasksState, completeActiveTask, delActiveTask } from '../../Recoil/recoilState'
 import CheckButton from '../ButtonComponents/CheckButton'
 import DeleteButton from '../ButtonComponents/DeleteButton'
 import Editable from '../Editable'
@@ -11,8 +11,8 @@ import Editable from '../Editable'
 export default function ActiveTask () {
   const [Index, setIndex] = useState(-1)
   const [NewTask, setNewTask] = useState<Task>({ task: '', status: TaskStatus.Active })
-  const ActiveTasks = useRecoilValue(ActiveTasksState)
-  //   const CompletedTasks = useRecoilValue(CompletedTasksState)
+  const ActiveTasks = useLiveQuery(ActiveTasksQuery) ?? []
+  //   const CompletedTasks = useLiveQuery(CompletedTasksQuery) ?? []
 
   const onCheck = (index: number) => {
     console.log(index)
@@ -25,29 +25,31 @@ export default function ActiveTask () {
 
   function handleEditTask (e: any, i: number) {
     // eslint-disable-next-line no-return-assign
-    setNewTask(x => x.task = e.target.value)
+    // setNewTask(x => x.task = e.target.value)
     setIndex(i)
   }
-  function pushTasks (e: any) {
-    console.log(e)
+  function updateTask (task: Task, newVal) {
+    task.task = newVal
+    void updateActiveTask(task)
   }
 
   return (
     <div class="container overflow-y:auto mx-auto mb-5">
       {ActiveTasks?.map((task, i) => {
+        const id = task.id ?? i
         return (
-          <div key={i} class="flex flex-wrap px-5 md:px-20">
-            <CheckButton onCheck={onCheck} index={i} />
+          <div key={id} class="flex flex-wrap px-5 md:px-20">
+            <CheckButton onCheck={onCheck} index={id} />
             <Editable
                             class="flex-grow w-2/3"
                             text={task.task}
                             placeholder="Write a task name"
                             type="input"
                             childRef={inputRef}
-                            handleOnInput = {(e: any) => handleEditTask(e, i)}
-                            handleKeyDown = {(e: any) => pushTasks(e)}
+                            handleOnInput = {(e: any) => handleEditTask(e, id)}
+                            onEnter = {(e: KeyboardEvent) => updateTask(task, (e.target as HTMLInputElement)?.value)}
                         />
-            <DeleteButton onDelete={onDelete} index={i} />
+            <DeleteButton onDelete={onDelete} index={id} />
           </div>
         )
       })}

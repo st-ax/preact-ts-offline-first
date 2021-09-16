@@ -1,11 +1,11 @@
+import { useLiveQuery } from 'dexie-react-hooks'
 import { h } from 'preact'
-import { useRecoilValue } from 'recoil'
-import { ActiveTasksState, CompletedTasksState } from '../../Recoil/recoilState'
+import { CompletedTasksQuery } from '../../Data/data'
 import DeleteButton from '../ButtonComponents/DeleteButton'
 
 export default function CompletedTask () {
-  const ActiveTasks = useRecoilValue(ActiveTasksState)
-  const CompletedTasks = useRecoilValue(CompletedTasksState)
+  // const ActiveTasks = useLiveQuery(ActiveTasksQuery) ?? []
+  const CompletedTasks = useLiveQuery(CompletedTasksQuery) ?? []
   const onDelete = (index: number) => {
     console.log('del', index)
   }

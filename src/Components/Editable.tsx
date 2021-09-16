@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useEffect, useState } from 'preact/hooks'
 
-const Editable = ({ text, type, placeholder, childRef, handleOnInput, handleKeyDown, ...props }: any) => {
+const Editable = ({ text, type, placeholder, childRef, handleOnInput, onEnter, ...props }: any) => {
   const [isEditing, setEditing] = useState(false)
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Editable = ({ text, type, placeholder, childRef, handleOnInput, handleKeyD
     const keys = ['Escape', 'Tab', 'Enter']
     if (type === 'input' && keys.includes(key) && event.target.value !== '') {
       setEditing(false)
-      handleKeyDown(event)
+      onEnter(event)
     }
   }
 

@@ -39,6 +39,7 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/brace-style': 'warn',
     '@typescript-eslint/no-floating-promises': 'warn',
+    '@typescript-eslint/promise-function-async': 'off',
     '@typescript-eslint/strict-boolean-expressions': 'off',
     '@typescript-eslint/restrict-template-expressions': 'warn',
     // https://github.com/typescript-eslint/typescript-eslint/issues/2540#issuecomment-692505191

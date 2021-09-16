@@ -1,17 +1,19 @@
+import { useLiveQuery } from 'dexie-react-hooks'
 import { h } from 'preact'
-import { useRecoilValue } from 'recoil'
 import Footer from './Components/Footer'
 // import InitializingServiceWorker from './Components/ServiceWorker'
 import ActiveTask from './Components/Tasks/ActiveTask'
 import AddTasks from './Components/Tasks/AddTasks'
 import CompletedTask from './Components/Tasks/CompletedTask'
-import { Task } from './Model/Task'
-import { ActiveTasksState, CompletedTasksState } from './Recoil/recoilState'
+import { ActiveTasksQuery, CompletedTasksQuery } from './Data/data'
+// eslint-disable-next-line @typescript-eslint/promise-function-async
+// const App = lazy(() => import('./app'))
+// <Suspense fallback={<div>Loading...</div>}></Suspense>
 
 export const App = () => {
   // InitializingServiceWorker()
-  const ActiveTasks = useRecoilValue<Task[]>(ActiveTasksState)
-  const CompletedTasks = useRecoilValue<Task[]>(CompletedTasksState)
+  const ActiveTasks = useLiveQuery(ActiveTasksQuery) ?? []
+  const CompletedTasks = useLiveQuery(CompletedTasksQuery) ?? []
 
   // useEffect(() => {
   //   localStorage.setItem('ActiveTasks', JSON.stringify(ActiveTasks))

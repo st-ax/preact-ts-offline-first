@@ -1,7 +1,7 @@
 import { h } from 'preact'
 import { useState } from 'preact/hooks'
+import { addActiveTask } from '../../Data/data'
 import { TaskStatus } from '../../Model/TaskStatus'
-import { addActiveTask } from '../../Recoil/recoilState'
 
 export default function AddTasks () {
   const [inputValue, setInputValue] = useState('')
