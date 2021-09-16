@@ -12,10 +12,14 @@ const Editable = ({ text, type, placeholder, childRef, handleOnInput, onEnter, .
 
   function HandleKeyDown (event: any, type: any): void {
     const { key } = event
-    const keys = ['Escape', 'Tab', 'Enter']
-    if (type === 'input' && keys.includes(key) && event.target.value !== '') {
-      setEditing(false)
-      onEnter(event)
+    const keys = ['Tab', 'Enter']
+    if (type === 'input') {
+      if (key === 'Escape') {
+        setEditing(false)
+      } else if (keys.includes(key) && event.target.value !== '') {
+        setEditing(false)
+        onEnter(event)
+      }
     }
   }
 
