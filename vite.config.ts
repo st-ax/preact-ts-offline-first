@@ -1,5 +1,7 @@
-import preactRefresh from '@prefresh/vite';
-import { defineConfig } from 'vite';
+import preactRefresh from '@prefresh/vite'
+import { defineConfig } from 'vite'
+import { VitePWA } from 'vite-plugin-pwa'
+import WindiCSS from 'vite-plugin-windicss'
 
 export default defineConfig({
   esbuild: {
@@ -13,5 +15,5 @@ export default defineConfig({
       { find: 'react-dom', replacement: 'preact/compat' },
     ],
   },
-  plugins: [preactRefresh()],
-});
+  plugins: [preactRefresh(), VitePWA(), WindiCSS({ safelist: 'prose prose-sm m-auto' })],
+})

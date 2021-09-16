@@ -1,6 +1,7 @@
-const defaultTheme = require('tailwindcss/defaultTheme');
+import { defineConfig } from 'windicss/helpers'
+import formsPlugin from 'windicss/plugin/forms'
 
-module.exports = {
+export default defineConfig({
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     safeList: [],
@@ -9,11 +10,13 @@ module.exports = {
   theme: {
     extend: {
       fontWeight: ['hover', 'focus'],
-      fontFamily: {
-        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+      colors: {
+        teal: {
+          100: '#096',
+        },
       },
     },
   },
   variants: {},
-  plugins: [],
-};
+  plugins: [formsPlugin],
+})
