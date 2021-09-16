@@ -1,4 +1,4 @@
-# A simple Todo App using Preact + Vite + Typescript + Tailwind CSS 
+# A simple Todo App using Preact + Vite + Typescript + WindiCSS 
 
 > This project was forked from https://github.com/greatvivek11/TodoApp
 
@@ -9,7 +9,7 @@
 ## Features:
 
 - 🌀 [Preact](https://preactjs.com)
-- 🎨 [TailwindCSS v2.0](https://blog.tailwindcss.com/tailwindcss-v2)
+- 🎨 [Windicss v3](https://windicss.org/)
 - ⚡ [Vite v2.0](https://github.com/vitejs/vite)
 - 📝 Eslint
 - 🔱 Typescript
