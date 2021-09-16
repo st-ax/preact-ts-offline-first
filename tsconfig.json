@@ -18,9 +18,9 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",
     "strictNullChecks": true,
     "importHelpers": true,
+    "jsx": "react",
     "jsxFactory": "h",
     "jsxImportSource": "preact"
   },

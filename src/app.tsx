@@ -23,14 +23,6 @@ export const App = () => {
   //   localStorage.setItem('CompletedTasks', JSON.stringify(CompletedTasks))
   // }, [CompletedTasks])
 
-  function returnLineBreak (): any {
-    if (CompletedTasks.length > 0 && ActiveTasks.length > 0) {
-      return (
-        <hr />
-      )
-    }
-  }
-
   console.log(`Active Tasks: ${ActiveTasks.length}`)
   console.log(`Completed Tasks: ${CompletedTasks.length}`)
 
@@ -39,7 +31,7 @@ export const App = () => {
       <h1 className="text-5xl">Todo App</h1>
       <AddTasks />
       <ActiveTask />
-      {returnLineBreak()}
+      <hr />
       <CompletedTask />
       <Footer />
     </div>
