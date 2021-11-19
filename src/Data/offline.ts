@@ -27,6 +27,8 @@ class TodoDB extends Dexie {
     })
     this.ActiveTasks = this.table('ActiveTasks')
     this.CompletedTasks = this.table('CompletedTasks')
+    this.ActiveTasks.mapToClass(Task)
+    this.CompletedTasks.mapToClass(Task)
     void this.init()
   }
 }

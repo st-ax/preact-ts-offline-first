@@ -1,11 +1,12 @@
+import CheckBoxOutlineBlankIcon from '@mui/icons-material/CheckBoxOutlineBlank'
+import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
+import { IconButton } from '@mui/material'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { h } from 'preact'
 import { useRef, useState } from 'preact/hooks'
 import { ActiveTasksQuery, completeActiveTask, delActiveTask, updateActiveTask } from '../../Data/data'
 import { Task } from '../../Model/Task'
 import { TaskStatus } from '../../Model/TaskStatus'
-import CheckButton from '../ButtonComponents/CheckButton'
-import DeleteButton from '../ButtonComponents/DeleteButton'
 import Editable from '../Editable'
 
 export default function ActiveTask () {
@@ -39,7 +40,9 @@ export default function ActiveTask () {
         const id = task.id ?? i
         return (
           <div key={id} class="flex flex-wrap px-5 md:px-20">
-            <CheckButton onCheck={onCheck} index={id} />
+            <IconButton onClick={() => onCheck(id)}>
+              <CheckBoxOutlineBlankIcon />
+            </IconButton>
             <Editable
                             class="flex-grow w-2/3"
                             text={task.task}
@@ -49,7 +52,9 @@ export default function ActiveTask () {
                             handleOnInput = {(e: any) => handleEditTask(e, id)}
                             onEnter = {(e: KeyboardEvent) => updateTask(task, (e.target as HTMLInputElement)?.value)}
                         />
-            <DeleteButton onDelete={onDelete} index={id} />
+            <IconButton onClick={() => onDelete(id)}>
+              <DeleteForeverIcon />
+            </IconButton>
           </div>
         )
       })}
