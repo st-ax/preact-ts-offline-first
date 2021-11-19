@@ -48,14 +48,6 @@ module.exports = {
     'react/no-unescaped-entities': 'warn',
     // '@typescript-eslint/prefer-nullish-coalesce': "warn",
 
-    // just too many of them in legacy code
-    // '@typescript-eslint/strict-boolean-expressions': 'off',
-    // '@typescript-eslint/explicit-function-return-type': 'off',
-    // '@typescript-eslint/restrict-template-expressions': 'off',
-    // '@typescript-eslint/no-floating-promises': 'off',
-    // '@typescript-eslint/no-use-before-define': 'off',
-    // 'react/prop-types': 'off',
-
     // @manu, how to change this?
     'multiline-ternary': ['error', 'always-multiline'],
 
