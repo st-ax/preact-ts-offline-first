@@ -11,6 +11,7 @@ void getTaskStates()
 export const addActiveTask = async (newTask: Task) => await todoDB.ActiveTasks.add(newTask)
 export const updateActiveTask = async (taskToUpdate: Task) => await todoDB.ActiveTasks.put(taskToUpdate)
 export const delActiveTask = async (idToDelete: number) => await todoDB.ActiveTasks.delete(idToDelete)
+export const delCompletedTask = async (idToDelete: number) => await todoDB.CompletedTasks.delete(idToDelete)
 
 export const completeActiveTask = async (idToComplete: number) => {
   const cTask = await todoDB.ActiveTasks.get(idToComplete)

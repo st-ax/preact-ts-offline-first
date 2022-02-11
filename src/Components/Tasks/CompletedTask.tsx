@@ -2,13 +2,13 @@ import DeleteForeverIcon from '@mui/icons-material/DeleteForever'
 import IconButton from '@mui/material/IconButton'
 import { useLiveQuery } from 'dexie-react-hooks'
 import { h } from 'preact'
-import { CompletedTasksQuery } from '../../Data/data'
+import { CompletedTasksQuery, delCompletedTask } from '../../Data/data'
 
 export default function CompletedTask () {
   const CompletedTasks = useLiveQuery(CompletedTasksQuery) ?? []
 
   const onDelete = (index: number) => {
-    console.log('del', index)
+    void delCompletedTask(index)
   }
 
   return (
