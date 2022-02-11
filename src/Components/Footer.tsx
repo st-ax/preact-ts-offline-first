@@ -3,7 +3,7 @@ import { h } from 'preact'
 const creds = [
   ['Preact', 'https://preactjs.com/'],
   ['Dexie', 'https://dexie.org/'],
-  ['TailwindCSS', 'https://tailwindcss.com/'],
+  ['Windi CSS', 'https://windicss.org/'],
   ['Vite', 'https://vitejs.dev/'],
   ['TypeScript', 'https://www.typescriptlang.org/'],
 ]
